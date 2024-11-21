@@ -1,0 +1,23 @@
+name: Deploy to GitHub Pages
+
+# Trigger the workflow when pushing to the main branch
+on:
+  push:
+    branches:
+      - main  # Or 'master' if that's your default branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Checkout the code from your repository
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    # Deploy the website to GitHub Pages
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.MY_TOKEN }}
+        publish_dir: ./SIA  # Specify the root directory or folder where your HTML files are
